@@ -1,0 +1,131 @@
+/* SignIn.css */
+
+.sign-in-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .signin__details-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .block-authentication {
+    margin-top: 20px;
+  }
+  
+  .block-content {
+    margin-top: 20px;
+  }
+  
+  .sociallogin-or {
+    text-align: center;
+    margin: 15px 0;
+    font-weight: bold;
+  }
+  
+  .sociallogin-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .social-login-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 5px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .button-fb {
+    background-color: #3b5998;
+  }
+  
+  .button-instagram {
+    background-color: #e4405f;
+  }
+  
+  .button-google {
+    background-color: #4285f4;
+  }
+  
+  .block-new-customer {
+    margin-top: 20px;
+  }
+  
+  .block-title a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .block-title a.active {
+    background-color: #eee;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .form {
+    margin-top: 20px;
+  }
+  
+  .form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .g__checkout {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .modal-gc-btn {
+    margin-bottom: 20px;
+  }
+  
+  .action-close {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

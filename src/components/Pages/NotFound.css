@@ -1,0 +1,30 @@
+.page-404{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px auto;
+}
+.left-col-404{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.right-col-404{
+    width: 20%;
+}
+/* Add this CSS to your existing styles or create a new CSS file */
+.go-to-home-button {
+    background-color: rgb(152,194,78); /* Button background color */
+  font-weight: bolder;
+    padding: 10px 20px; /* Padding for the button */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove button border */
+    border-radius: 3px; /* Add border-radius for rounded corners */
+    cursor: pointer; /* Add pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .go-to-home-button:hover {
+    background-color: #719435; /* Change background color on hover */
+  }
+  

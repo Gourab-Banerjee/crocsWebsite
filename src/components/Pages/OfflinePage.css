@@ -1,0 +1,20 @@
+/* OfflinePage.css */
+.offline-page {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(174, 248, 248);
+  }
+  
+  .offline-page h1 {
+    color: #e41e2d;
+  }
+  
+  .offline-page p {
+    color: #333;
+  }
+  

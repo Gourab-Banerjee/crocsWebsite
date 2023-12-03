@@ -1,0 +1,41 @@
+.box-container{
+    margin: 0px auto;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.one-stop{
+    text-align: center;
+}
+.shop-row{
+    display: flex;
+width: 100%;
+justify-content: space-evenly;
+}
+.shop-col{
+    width: 45%;
+    border: 1px solid black;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.shop-col:hover{
+    color: white;
+    background-color: black;
+}
+.crocs-insta{
+    display: flex;
+    
+}
+@media (max-width: 580px) {
+    .shop-row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .shop-col{
+        width: 90%;
+    }
+}

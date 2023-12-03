@@ -1,0 +1,129 @@
+.product-container {
+  margin-top: 5px;
+  /* margin-bottom: 5px; */
+  /* background-color: #e41e2d; */
+  margin-left: 10px;
+  margin-right: 10px;
+  /* font-size: 2em; */
+  box-sizing: border-box;
+  /* height: 300px; */
+  height: 500px;
+}
+/* *{
+    box-sizing: border-box;
+} */
+.product-offer {
+  margin-top: 10px;
+  margin-left: 35%;
+  width: 29%;
+  /* height: 47px; */
+  display: inline-block;
+  border-radius: 5px;
+  background-color: white;
+  text-align: center;
+}
+
+.offer-price {
+  /* display: inline-block; */
+  /* margin: 0px 30px; */
+  margin-bottom: 5px;
+  text-align: center;
+}
+.view {
+  display: inline-block;
+  /* position: absolute; */
+  margin-left: 19%;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 5px;
+}
+.view:hover{
+  color: white;
+  background-color: black;
+}
+.view p {
+  display: inline-block;
+  text-align: center;
+  margin: 10px 40px;
+}
+.product-card-container {
+  margin: 25px 15px;
+  /* max-width: 1500px; */
+  display: flex;
+  flex-wrap: wrap;
+  /* height: 50px; */
+}
+.product-card {
+  background-color: white;
+  /* margin: 10px 10px; */
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  /* max-height:200px ; */
+  /* height: auto; */
+  height: 400px;
+}
+.product-card img {
+  width: 55%;
+}
+/* .product-card{
+    height: 50px;
+} */
+.product-card h5 {
+  padding-bottom: 20px;
+  font-size: 15px;
+
+  color: #e41e2d;
+}
+/* @media (max-width: 1040) {
+  .view {
+    margin-left: 19%;
+  }
+} */
+/* @media (min-width:1500px) {
+  .product-card {
+    height: 800px;
+  }
+} */
+@media (max-width: 996px) {
+  .product-offer {
+    margin-top: 10px;
+    margin-left: 10%;
+    width: 80%;
+    /* height: 47px; */
+    display: inline-block;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+  }
+  .view {
+    display: block;
+    margin: 10px auto;
+    width: 30%;
+    text-align: center;
+  }
+  .product-card {
+    height: 300px;
+  }
+  .product-card p {
+    height: 25px;
+    /* font-size: 12px; */
+  }
+}
+@media (max-width:640px) {
+   
+}
+@media (max-width: 580px) {
+  .product-offer {
+    width: 80%;
+  }
+  .view {
+    width: 45%;
+    text-align: center;
+  }
+
+  .product-card p {
+    height: 60px;
+    /* font-size: 12px; */
+  }
+}

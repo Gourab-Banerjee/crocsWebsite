@@ -1,0 +1,68 @@
+body {
+    margin: 0px 0px;
+    font-family: 'proxima_novaregular','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-style: inherit;
+    font-weight: 400;
+    box-sizing: border-box;
+    /* line-height: 1.42857143; */
+    /* font-size: 1.4rem; */
+}
+.quoteContainer {
+    background-color: #6d3443 ;
+    padding: 10px;
+    height: 22px;
+    /* width: 100vw; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top_header-promo {
+    text-align: center;
+}
+/* .truck-logo{
+    color: #fff  ;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 900;
+    margin-right: 5px;
+    font-style: inherit;
+} */
+span.wpx-sub {
+    color: #fff  ;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-size: 13px;
+    
+    
+}
+.header-global-promo{
+    margin-top: 9px;
+    background-color: black;
+    height: 42px;
+    /* width: 100vw; */
+}
+.header-global-promo img {
+    width: 60px;
+    
+    margin-left: 14%;
+    margin-top: 20px;
+}
+
+
+@media (max-width: 996px){
+    .quoteContainer {
+        flex-direction: column; 
+    text-align: center;
+    }
+    .header-global-promo{
+        text-align: center;
+        
+    }
+    .header-global-promo img{
+        margin-left: 0px;
+        
+    }
+  
+}
