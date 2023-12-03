@@ -1,0 +1,17 @@
+.homePageContainer{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    
+
+}
+.container-wrap{
+    width: 100%;
+}
+
+@media (min-width:1400px) {
+    .container-wrap{
+        width: 70%;
+    }
+}

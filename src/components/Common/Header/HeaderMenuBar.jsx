@@ -119,10 +119,7 @@ const HeaderMenuBar = () => {
             />
           </a>
         </div>
-       
-      </div>
-
-      {showSidebar ? (
+        {showSidebar ? (
         // Sidebar content
         <div className="sidebar">
            <div className="close-button" onClick={toggleSidebar}>
@@ -160,6 +157,10 @@ const HeaderMenuBar = () => {
         </div>
       )}
 
+       
+      </div>
+
+     
 <div className="header-content-right">
         <ul className="right-links">
           <li className="search-icon"  onMouseEnter={toggleSearchInput} onMouseLeave={toggleSearchInput}>
