@@ -132,6 +132,7 @@ const CategorySlide = ({productImages,categoryImg,categoryTitle}) => {
                   <div className='card'></div>
                   <img src={productImages[index % productImages.length]} alt={`Product ${index + 1}`} />
                   <p>{product.name}</p>
+                  <h5>KD {product.price.regularPrice.amount.value}</h5>
           
                 </div>
               </SwiperSlide>

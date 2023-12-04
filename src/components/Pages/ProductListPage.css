@@ -1,3 +1,9 @@
+.listing-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .page-main{
     width: 98%;
     display: flex;
@@ -14,7 +20,8 @@
 .filters{
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 17%;
+    font-size: 0.8rem;
 
 }
 .filters-header{
@@ -23,6 +30,7 @@
 }
 .product-items{
     display: flex;
+    display: 70%;
     /* flex-wrap: wrap; */
 }
 .product-items ul{
@@ -76,6 +84,12 @@
     justify-content: center;
     align-items: center;
     margin: 150px 0px;
+  }
+
+  @media (min-width:1400px) {
+    .page-main{
+        width:70%
+    }
   }
 
   @media (max-width:980px) {

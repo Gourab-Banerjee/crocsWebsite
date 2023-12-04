@@ -138,7 +138,7 @@ breakpoints={{
                   alt={`Product ${index + 1}`}
                 />
                 <p>{product.name}</p>
-                <h5>KD{product.price.regularPrice.amount.value}</h5>
+                <h5>KD {product.price.regularPrice.amount.value}</h5>
               </div>
             </SwiperSlide>
           ))}
@@ -152,6 +152,9 @@ breakpoints={{
           </div>
   )}
       </div>
+       {/* Navigation arrows */}
+       <div className="swiper-button-next"></div>
+        <div className="swiper-button-prev"></div>
     </div>
   );
 };

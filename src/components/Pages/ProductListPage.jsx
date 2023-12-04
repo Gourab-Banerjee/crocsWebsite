@@ -18,6 +18,7 @@ const ProductListPage = () => {
   const [price, setPrice] = useState([minPrice, maxPrice]);
   const [isPriceSliderVisible, setIsPriceSliderVisible] = useState(false);
   const [isGenderSliderVisible, setIsGenderSliderVisible] = useState(false);
+  const [isSizeSliderVisible,setIsSizeSliderVisible]=useState(false)
 
   
   useEffect(() => {
@@ -66,6 +67,12 @@ const ProductListPage = () => {
     setIsPriceSliderVisible(false);
   };
 
+  const toggleSizeSliderVisibility = () => {
+    setIsSizeSliderVisible(!isSizeSliderVisible);
+    // setIsPriceSliderVisible(false);
+    // setIsGenderSliderVisible(false);
+  };
+
   if (status === 'loading') {
     return <div>Loading...</div>;
   }
@@ -83,7 +90,7 @@ const ProductListPage = () => {
 
   return (
 
-    <div>
+    <div className='listing-page'>
       <div className='page-main'>
       <div className='page-title-wrapper'>
         <h1>All Products</h1>
@@ -129,7 +136,22 @@ const ProductListPage = () => {
         </div>
 
         <div className='filters-item'>
-          <p>DEPARTMENT</p>
+          <p onClick={toggleSizeSliderVisibility}>FOOTWEAR SIZES {isSizeSliderVisible ? <FaAngleUp /> : <FaAngleDown />}</p>
+          {isSizeSliderVisible && (
+            <div className='size-section'>
+<input type='checkbox' name="men" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Men</a><br />
+                        <input type="checkbox" name="women" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Women</a> <br />
+                        <input type="checkbox" name="kids" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Kids</a><br />
+                        <input type="checkbox" name="girls" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Girls</a> <br />
+                        <input type="checkbox" name="boys" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Boys</a> <br />
+                        <input type="checkbox" name="unisex_kids" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Unisex Kid</a>s <br />
+                        <input type="checkbox" name="unisex" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Unisex</a> <br />
+            </div>
+          )}
+        </div>
+        <div className=''>
+          <h3>Compare Products</h3>
+          <p>you have no items to compare.</p>
         </div>
 
       </div>
@@ -141,8 +163,9 @@ const ProductListPage = () => {
           <li key={product.id}>
             <Link to={`/product/${product.url_key}`}>
 
-            <img className='product-img' src={product.image.url} alt={product.name} />
-            <p className='product-name'>{product.name}</p>
+            {/* <img className='product-img' src={product.image.url} alt={product.name} /> */}
+            <img src="https://prod.aaw.com/media/catalog/product/cache/b8e9ee3e3eebf01caeedeb184a52afee/5/2/525252b6bc2de85aedfb32d5856e347606d54e60b66b6b60613053452117492c.jpeg" alt={product.name} className='product-img'/>
+            <p className='product-name' style={{color:"black"}}>{product.name}</p>
             <h4 className='product-price'>KD{product.price.regularPrice.amount.value}</h4>
             </Link>
           </li>

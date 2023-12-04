@@ -21,6 +21,7 @@ const HomePage = () => {
       
       <div className="homePageContainer">
         <div className="container-wrap">
+          <Poster src="https://prod.aaw.com/media/weltpixel/owlcarouselslider/images/h/p/hp-crocs-gift-card1_2560x788.jpg" />
         <ProductSlider
         title="UP TO 25% - 70% OFF!"
         backGroundColor="#e41e2d"
