@@ -4,12 +4,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import "./Banner.css";
+import "./FullBanner.css";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
-const Banners = ({ slideImages }) => {
+const FullBanner = ({ slideImages }) => {
   return (
-    <div className='banner-container'>
+    <div className='full-banner-container'>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={50}
@@ -32,4 +32,4 @@ const Banners = ({ slideImages }) => {
   );
 }
 
-export default Banners;
+export default FullBanner;

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaRegHeart } from "react-icons/fa6";
 import './ProductDetailsPage.css';
 import { fetchProductByUrl } from '../../features/ProductDetailsSlice'; // Import the action creator
+import { addItem } from '../../features/CartSlice';
 
 const ProductDetailsPage = () => {
   const { url_key } = useParams();
@@ -49,6 +50,17 @@ const ProductDetailsPage = () => {
     setCount(count + 1);
   };
 
+  const handleAddToCart = () => {
+    const cartItem = {
+      id: item.id,
+      name: item.name,
+      price: item.price.regularPrice.amount.value,
+      quantity: count,
+    };
+
+    dispatch(addItem(cartItem));
+  };
+
   return (
     <div className="product-details-page">
       <div className="product-details-container">
@@ -68,7 +80,7 @@ const ProductDetailsPage = () => {
             <button onClick={handleIncrease}>+</button>
           </div>
           <div className="add-to-cart">
-            <button>Add to Cart</button>
+          <button onClick={handleAddToCart}>Add to Cart</button>
           </div>
           <div className='hearts'>
           <a href="#!">

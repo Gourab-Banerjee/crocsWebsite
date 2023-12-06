@@ -9,6 +9,10 @@
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  border:1px solid rgb(174, 224, 241);
+  /* height: 365px;
+   */
+   /* height: 10%; */
 }
 
 .widget__border-icon {
@@ -60,6 +64,13 @@ a.widget__viewall:hover {
   flex: 0 0 82.333333%;
   max-width: 82.333333%;
 }
+#category-product-card{
+  height: 340px;
+}
+.product-card img{
+  width: 80%;
+}
+
 /* ProductSlider.css */
 
 /* Custom styles for Swiper navigation buttons */

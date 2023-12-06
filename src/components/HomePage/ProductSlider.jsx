@@ -68,7 +68,7 @@ const ProductSlider = ({ title, backGroundColor, images }) => {
   }, []);
   const handleViewAllClick = () => {
     // Navigate to the product listing page
-    navigate('/productList');
+    navigate("/productList");
   };
 
   return (
@@ -81,80 +81,72 @@ const ProductSlider = ({ title, backGroundColor, images }) => {
       </div>
       <div className="view" onClick={handleViewAllClick}>
         <p>VIEW ALL</p>
-        
       </div>
 
-      
       <div className="product-card-container">
-      {product.length !== 0 ?(
-        <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-          spaceBetween={10}
-          autoplay={true}
-          navigation
+        {product.length !== 0 ? (
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+            spaceBetween={10}
+            autoplay={true}
+            navigation
+            breakpoints={{
+              // when window width is >= 640px
+              375: {
+                slidesPerView: 1,
+              },
+              430: {
+                slidesPerView: 2,
+              },
+              640: {
+                slidesPerView: 2,
+              },
+              // when window width is >= 768px
+              768: {
+                slidesPerView: 3,
+              },
 
-breakpoints={{
-            // when window width is >= 640px
-            375: {
-              
-              slidesPerView: 1,
-            },
-            430: {
-               
-               slidesPerView: 2,
-            },
-            640: {
-             
-              slidesPerView: 2,
-            },
-            // when window width is >= 768px
-            768: {
-              
-              slidesPerView: 3,
-            },
+              980: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 4,
+              },
+              1150: {
+                slidesPerView: 4,
+              },
+            }}
 
-            980: {
-              
-              slidesPerView: 3,
-            },
-            1024:{
-              
-              slidesPerView:4,
-            },
-            1150: {
-              
-              slidesPerView: 4,
-            },
-          }}
-          
-          // pagination={{ clickable: true }}
-        >
-          {product.map((product, index) => (
-            <SwiperSlide key={index}>
-              <div className="product-card">
-                <div className="card"></div>
-                <img
-                  src={images[index % images.length]}
-                  alt={`Product ${index + 1}`}
-                />
-                <p>{product.name}</p>
-                <h5>KD {product.price.regularPrice.amount.value}</h5>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        ):(
+            // pagination={{ clickable: true }}
+          >
+            {product.map((product, index) => (
+              <SwiperSlide key={index}>
+                <div className="product-card">
+                  <img
+                    src={images[index % images.length]}
+                    alt={`Product ${index + 1}`}
+                  />
+                  <div className="product-card-details">
+                    <p className="product-card-name">{product.name}</p>
+                    <h5 className="product-card-price">
+                      KD {product.price.regularPrice.amount.value}
+                    </h5>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
           <div className="error-container">
             <h2>Api Error! Check your connection</h2>
             {/* <h4>{error}</h4> */}
             {/* <button onClick={handleRefresh}>Retry Now</button> */}
           </div>
-  )}
+        )}
       </div>
-       {/* Navigation arrows */}
-       <div className="swiper-button-next"></div>
-        <div className="swiper-button-prev"></div>
+      {/* Navigation arrows
+      <div className="swiper-button-next"></div>
+      <div className="swiper-button-prev"></div> */}
     </div>
   );
 };

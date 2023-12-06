@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearError, fetchProducts, setCurrentPage, setPriceRange  } from '../../features/ProductSlice';
 import { Link } from 'react-router-dom';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { FaPlus , FaMinus} from "react-icons/fa6";
 import Slider from '@mui/material/Slider';
 import "./ProductListPage.css"
 
@@ -101,8 +102,14 @@ const ProductListPage = () => {
       <div className='filters'>
         <div className='filters-header'><h5>FILTERS</h5></div>
         <div className='filters-item'>
-          <p onClick={togglePriceSliderVisibility}>PRICE {isPriceSliderVisible ? <FaAngleUp /> : <FaAngleDown />}
-          </p>
+          <div className='sidebar-row'>
+            <div className='row-para'>PRICE</div>
+            <div className='row-button'>
+              <button onClick={togglePriceSliderVisibility}>{isPriceSliderVisible ? <FaMinus /> : <FaPlus /> }</button>
+            </div>
+          </div>
+          {/* <p onClick={togglePriceSliderVisibility}>PRICE {isPriceSliderVisible ? <FaMinus /> : <FaPlus /> }
+          </p> */}
           {isPriceSliderVisible && (
             <>
               <Slider
@@ -119,7 +126,13 @@ const ProductListPage = () => {
         </div>
 
         <div className='filters-item'>
-          <p onClick={toggleGenderSliderVisibility}>GENDER {isGenderSliderVisible ? <FaAngleUp /> : <FaAngleDown />}</p>
+        <div className='sidebar-row'>
+            <div className='row-para'>GENDER</div>
+            <div className='row-button'>
+              <button onClick={toggleGenderSliderVisibility}>{isGenderSliderVisible  ? <FaMinus /> : <FaPlus /> }</button>
+            </div>
+          </div>
+          {/* <p onClick={toggleGenderSliderVisibility}>GENDER {isGenderSliderVisible ? <FaMinus /> : <FaPlus /> }</p> */}
           {isGenderSliderVisible && (
                     <div className="gender-section">
                       <div className="sub-gender-section">
@@ -136,22 +149,32 @@ const ProductListPage = () => {
         </div>
 
         <div className='filters-item'>
-          <p onClick={toggleSizeSliderVisibility}>FOOTWEAR SIZES {isSizeSliderVisible ? <FaAngleUp /> : <FaAngleDown />}</p>
+        <div className='sidebar-row'>
+            <div className='row-para'>FOOTWEAR SIZES</div>
+            <div className='row-button'>
+              <button onClick={toggleSizeSliderVisibility}>{isSizeSliderVisible ? <FaMinus /> : <FaPlus /> }</button>
+            </div>
+          </div>
+          {/* <p onClick={toggleSizeSliderVisibility}>FOOTWEAR SIZES {isSizeSliderVisible ? <FaMinus /> : <FaPlus /> }</p> */}
           {isSizeSliderVisible && (
             <div className='size-section'>
 <input type='checkbox' name="men" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Men</a><br />
-                        <input type="checkbox" name="women" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Women</a> <br />
-                        <input type="checkbox" name="kids" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Kids</a><br />
-                        <input type="checkbox" name="girls" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Girls</a> <br />
-                        <input type="checkbox" name="boys" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Boys</a> <br />
-                        <input type="checkbox" name="unisex_kids" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Unisex Kid</a>s <br />
-                        <input type="checkbox" name="unisex" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Unisex</a> <br />
+                        <input  name="women" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Women</a> <br />
+                        <input  name="kids" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Kids</a><br />
+                        <input  name="girls" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Girls</a> <br />
+                        <input  name="boys" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Boys</a> <br />
+                        <input  name="unisex_kids" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Unisex Kid</a>s <br />
+                        <input  name="unisex" className="gender-input" /><a style={{ textDecoration: 'none', color: 'black' }} href="#!">Unisex</a> <br />
             </div>
           )}
         </div>
         <div className=''>
           <h3>Compare Products</h3>
           <p>you have no items to compare.</p>
+        </div>
+        <div className=''>
+          <h3>My Wish List</h3>
+          <p>you have no items in your wishlist</p>
         </div>
 
       </div>
@@ -166,7 +189,7 @@ const ProductListPage = () => {
             {/* <img className='product-img' src={product.image.url} alt={product.name} /> */}
             <img src="https://prod.aaw.com/media/catalog/product/cache/b8e9ee3e3eebf01caeedeb184a52afee/5/2/525252b6bc2de85aedfb32d5856e347606d54e60b66b6b60613053452117492c.jpeg" alt={product.name} className='product-img'/>
             <p className='product-name' style={{color:"black"}}>{product.name}</p>
-            <h4 className='product-price'>KD{product.price.regularPrice.amount.value}</h4>
+            <h4 className='product-price'>KD {product.price.regularPrice.amount.value}</h4>
             </Link>
           </li>
         ))}

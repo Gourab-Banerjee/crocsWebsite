@@ -20,13 +20,22 @@
 .filters{
     display: flex;
     flex-direction: column;
-    width: 17%;
+    width: 20%;
     font-size: 0.8rem;
 
 }
 .filters-header{
    /* text-align: center; */
     border-bottom: 1px solid black;
+}
+.sidebar-row{
+    display: flex;
+    justify-content: space-between;
+    margin: 3px 2px;
+}
+.row-button button{
+    border: none;
+    background-color: white;
 }
 .product-items{
     display: flex;

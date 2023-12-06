@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./HomePage.css"
-
+import FullPoster from "./FullPoster";
 import ProductSlider from "./ProductSlider";
 import Poster from "./Poster";
 import Category from "./Category";
@@ -10,14 +10,16 @@ import CategorySlide from "./CategorySlide";
 
 // import images
 import { bannerImages1, bannerImages2, productImages1, productImages2, categoryProductImages1, categoryProductImages2, categoryProductImages3 } from "../images/images";
+import FullBanner from "./FullBanner";
+
 
 
 const HomePage = () => {
   return (
     <div>
-      <Banners slideImages={bannerImages1} />
+      <FullBanner slideImages={bannerImages1} />
 
-      <Poster src="https://prod.aaw.com/media/wysiwyg/brands-logo/new-tabby-blk-en.jpg" />
+      <FullPoster src="https://prod.aaw.com/media/wysiwyg/brands-logo/new-tabby-blk-en.jpg" />
       
       <div className="homePageContainer">
         <div className="container-wrap">
