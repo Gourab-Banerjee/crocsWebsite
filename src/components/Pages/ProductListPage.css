@@ -20,8 +20,9 @@
 .filters{
     display: flex;
     flex-direction: column;
-    width: 20%;
-    font-size: 0.8rem;
+    width: 25%;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 
 }
 .filters-header{
@@ -31,7 +32,8 @@
 .sidebar-row{
     display: flex;
     justify-content: space-between;
-    margin: 3px 2px;
+    /* margin: 3px 2px; */
+    padding: 10px 0px;
 }
 .row-button button{
     border: none;
@@ -39,8 +41,26 @@
 }
 .product-items{
     display: flex;
-    display: 70%;
+    flex-direction: column;
+    display: 75%;
     /* flex-wrap: wrap; */
+}
+.product-items-top{
+  display: flex;
+  justify-content: space-between;
+  padding:25px
+}
+.product-item-count{
+ font-size: 0.8rem;
+ margin-left: 40px;
+}
+
+#sortSelect {
+  margin-left: 10px;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
 }
 .product-items ul{
     display: flex;
@@ -50,20 +70,42 @@
 .product-items ul li{
     list-style: none;
     margin: 5px;
-    width: 20%;
-    height: 300px;
-    /* border: 1px solid black; */
+    width: 23%;
+    
+    min-height: 280px;
+    border: 1px solid rgb(227, 234, 235);
     border-radius: 5px;
     text-align: center;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2)
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2)
+}
+.single-product{
+  margin: 9px;
 }
 .product-img{
     height: 200px;
 
 }
+a{
+  text-decoration: none;
+}
 .product-name{
-    height: 30px;
-    font-size: 80%;
+    /* height: 30px; */
+    font-size: 0.9rem;
+    text-align: left;
+    padding-left: 30px;
+    margin-bottom: 6px;
+}
+.product-name:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+.product-price{
+    color: black;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 
@@ -77,8 +119,11 @@
   
   .pagination button {
     margin: 0 5px;
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
     cursor: pointer;
+    border: none;
+    background-color: white;
+    font-size: 1.5rem;
   }
   
   .pagination span {
@@ -111,3 +156,127 @@
         width:80%
     }
   }
+
+
+  .size-section {
+    margin-top: 20px;
+    margin-left: 10px;
+    height: 20vh;
+    /* background: aqua; */
+    display: flex;
+    gap: 7%;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .size-section-size {
+    width: 25%;
+    height: 15%;
+    color: rgb(97, 96, 96);
+    background: rgb(240,240,240);
+    /* margin-top: 6%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid rgb(221, 217, 217);
+    font-weight: bold;
+    margin-bottom: 2%;
+  }
+
+  /* ProductListPageSideBar.css */
+
+.filter-button-responsive {
+  display: none;
+  cursor: pointer;
+ 
+}
+.filter-button-responsive p{
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 7px 12px;
+}
+
+.price-filter-sidebar {
+  display: none;
+  /* ... (other styles for the sidebar) */
+}
+
+
+
+/* css for productFilterSidebar */
+.price-filter-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.price-filter-sidebar p {
+  font-size: 15px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.price-filter-sidebar p:hover {
+  background-color: #f9f9f9;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(151,194,78);
+  /* border-bottom: 2px solid #eee; */
+}
+.sidebar-header-left{
+  margin-left: 10px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.sidebar-close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+  transition: color 0.3s;
+}
+.filter-sidebar-row{
+  display: flex;
+    justify-content: space-between;
+    /* margin: 3px 2px; */
+    padding: 10px 12px;
+}
+
+
+@media (max-width: 768px) {
+  .products-page{
+    display: flex;
+    flex-direction: column;
+}
+  
+  .filters{
+    display: none;
+  }
+
+  .filter-button-responsive {
+    display: block;
+  }
+
+  .price-filter-sidebar {
+    display: block;
+    /* ... (other responsive styles for the sidebar) */
+  }
+}

@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'proxima_novaregular';
+    src: local('proxima_novaregular'),
+         url('./fonts/proxima_novaregular.ttf') format('truetype')
+         
+}
+
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: local('HelveticaNeueLight'),
+         url('./fonts/HelveticaNeueLight.otf') format('opentype'),
+        
+}
+*{
+    font-family: 'proxima_novaregular','Helvetica Neue',Helvetica,Arial,sans-serif;
+}

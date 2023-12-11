@@ -9,9 +9,15 @@
 .container-wrap{
     width: 100%;
 }
+.spinner-container{
+    display: flex;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+}
 
 @media (min-width:1400px) {
     .container-wrap{
-        width: 70%;
+        width: 73%;
     }
 }

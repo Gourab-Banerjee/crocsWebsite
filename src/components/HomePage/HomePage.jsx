@@ -7,6 +7,11 @@ import Category from "./Category";
 import CategoryBox from "./CategoryBox";
 import Banners from "./Banners";
 import CategorySlide from "./CategorySlide";
+import { useDispatch, useSelector } from 'react-redux';
+import { createEmptyCart } from "../../features/CreateEmptyCart";
+import { FadeLoader } from "react-spinners"; // Import the ClipLoader component from react-spinners
+
+
 
 // import images
 import { bannerImages1, bannerImages2, productImages1, productImages2, categoryProductImages1, categoryProductImages2, categoryProductImages3 } from "../images/images";
@@ -15,6 +20,33 @@ import FullBanner from "./FullBanner";
 
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const cartId = useSelector((state) => state.emptyCart.cartId);
+
+  const[loading, setLoading]=useState(true)
+
+  useEffect(() => {
+    // Check if cartId exists in local storage
+    const existingCartId = localStorage.getItem("cartId");
+    setTimeout(() => {
+      if (existingCartId) {
+        dispatch(createEmptyCart.fulfilled(existingCartId));
+      } else {
+        dispatch(createEmptyCart());
+      }
+      
+      // Set loading state to false when the data is loaded
+      setLoading(false);
+    }, 2000);
+  }, [dispatch]);
+
+  if (loading) {
+    return (
+      <div className="spinner-container">
+        <FadeLoader  size={100} color={"#123abc"} loading={loading} />
+      </div>
+    );
+  }
   return (
     <div>
       <FullBanner slideImages={bannerImages1} />

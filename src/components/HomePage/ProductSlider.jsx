@@ -93,7 +93,7 @@ const ProductSlider = ({ title, backGroundColor, images }) => {
             breakpoints={{
               // when window width is >= 640px
               375: {
-                slidesPerView: 1,
+                slidesPerView: 2,
               },
               430: {
                 slidesPerView: 2,

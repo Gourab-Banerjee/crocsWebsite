@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 // import './App.css';
 import "./online.css"
+import "./common.css"
 
 
 import React, { useState, useEffect } from "react";

@@ -2,4 +2,15 @@
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
+   
 }
+/* @media (max-width:768px) {
+    .poster-container{
+        height: 70vh;
+       
+    }
+    .poster-container img{
+object-fit: contain;
+    }
+    
+} */

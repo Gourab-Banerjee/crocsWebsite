@@ -18,7 +18,7 @@ max-width: 1500px;
 .panel-header-links li {
   color: #fff;
   list-style: none;
-  font-family: 'proxima_novaregular','Helvetica Neue',Helvetica,Arial,sans-serif;
+  /* font-family: 'proxima_novaregular','Helvetica Neue',Helvetica,Arial,sans-serif; */
   font-size: 70%;
   /* margin-right: 10%; */
 }

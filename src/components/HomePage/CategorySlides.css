@@ -42,7 +42,7 @@ img {
 }
 .widget__title {
   text-align: center;
-  font-size: 2em;
+  font-size: 1.4rem;
   color: #ffffff;
   margin: 10px 0 15px;
 }
@@ -63,11 +63,12 @@ a.widget__viewall:hover {
 #card-container {
   flex: 0 0 82.333333%;
   max-width: 82.333333%;
+  margin: 4px 15px;
 }
 #category-product-card{
   height: 340px;
 }
-.product-card img{
+#category-product-card img{
   width: 80%;
 }
 
@@ -132,6 +133,10 @@ a.widget__viewall:hover {
     flex: 0 0 100%;
     max-width: 100%;
   }
+  .widget__icon img {
+    max-width: 30%;
+    margin: 0 auto;
+}
   /* .widget__icon img {
         max-width: 50%;
         margin: 0 auto;

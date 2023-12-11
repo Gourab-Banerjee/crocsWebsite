@@ -53,6 +53,7 @@ const ProductDetailsPage = () => {
   const handleAddToCart = () => {
     const cartItem = {
       id: item.id,
+      sku:item.sku,
       name: item.name,
       price: item.price.regularPrice.amount.value,
       quantity: count,
@@ -68,10 +69,30 @@ const ProductDetailsPage = () => {
           <img src={item.image.url} alt={item.name} />
         </div>
         <div className="product-info-container">
-          <h3>{item.name}</h3>
+          <p className='pdp-name'>{item.name}</p>
           <div className='item-details'>
-          <h2>Price: {item.price.regularPrice.amount.value} {item.price.regularPrice.amount.currency}</h2>
-          <h5>SKU#: {item.sku}</h5>
+          <h2 className='pdp-price'>KD {item.price.regularPrice.amount.value} </h2>
+          <h5 className='pdp-sku'>SKU#: {item.sku}</h5>
+          </div>
+          <div className="tabby-container">
+           <div className="tabby-text-container">
+           <div className="tabby-text">
+              <span>or 4 interest-free payments of <strong>KWD 5.000.</strong> No fees. Shariah-compliant.</span>
+              </div>
+              <div className="learn-more"><span>Learn more</span></div>
+           </div>
+            
+          </div>
+          <div className="tabby-container" >
+           <div className="tabby-text-container" id='second-text'>
+           <div className="tabby-text" >
+              <span>Split in upto 4 interest-free payments of KWD 5, or pay in full!</span>
+              </div>
+              <div className="learn-more"><span>Learn more</span></div>
+           </div>
+            <div className="tabby-logo">
+              <img src="https://cdn.tamara.co/widget-v2/assets/tamara-grad-en.ac5bf912.svg" alt="" />
+            </div>
           </div>
          <div className='product-controls'>
          <div className="quantity-control">
