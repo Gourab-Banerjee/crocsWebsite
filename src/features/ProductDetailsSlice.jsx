@@ -14,6 +14,7 @@ export const fetchProductByUrl = createAsyncThunk(
           query: `{
             products(search: "", pageSize: 10, filter: { url_key: { eq: "${url_key}" } }) {
               items {
+                __typename
                 id
                 name
                 sku
@@ -46,7 +47,7 @@ export const fetchProductByUrl = createAsyncThunk(
       if (result.errors) {
         throw new Error(result.errors[0].message);
       }
-
+console.log(result.data.products.items);
       return result.data.products.items;
     } catch (error) {
       

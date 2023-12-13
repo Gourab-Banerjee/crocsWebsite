@@ -1,0 +1,156 @@
+.sign-in-modal{
+    position: fixed;
+    top: 45px;
+    left: 27%;
+    background-color: rgb(255,255,255);
+    width: 45%;
+    height: 90%;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+   letter-spacing: 1px;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow-x: hidden;
+}
+.sign-in-details-title{
+   
+    border-bottom: 1px sloid rgb(47, 168, 216);
+}
+.sign-in-close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 50px;
+    border: none;
+    background-color:rgb(255,255,255);
+}
+.social-medias{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+.social-media-header{
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+.social-media-facebook, .social-media-instagram, .social-media-google{
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    height: 35px;
+    width: 100%;
+}
+.social-media-icon{
+    
+   
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    border-radius: 2px;
+
+}
+.social-media-text{
+ 
+    font-size: 0.9rem;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    border-radius: 2px;
+}
+#facebook{
+    background-color: rgb(59,89,152);
+    color: white;
+}
+#instagram{
+    background-color: rgb(231,34,82);
+    color: white;
+}
+#google{
+    border: 0.5px solid skyblue;
+}
+.or{
+    margin-top: 20px;
+}
+.sign-in-form{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+.form-title{
+    font-size: 2rem;
+    color: rgb(195,202,78);
+    text-decoration: underline black 1px;
+    text-align: center;
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+.input-box> input{
+    height: 30px;
+    border: 1px solid rgb(109, 158, 241);
+    
+}
+.input-box> input:hover{
+    border:1px solid #3f71df;
+}
+.sign-in-form input:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+.submit-box{
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.submit-button> button{
+    padding:10px 20px;
+    background-color:#002a82  ;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+}
+.forgot-password{
+    padding-top: 10px;
+    font-size: 0.9rem;
+    color: rgb(109, 158, 241);
+}
+.create-account{
+    font-size: 2rem;
+    color: rgb(109, 158, 241);
+    margin-top: 20px;
+    
+}
+.line{
+
+width: 90%;
+background-color: rgb(245,245,245);
+padding-bottom: 5px;
+}
+.guest{
+    background-color: black;
+    color: #fff;
+    width: 55%;
+    padding: 10px;
+    font-size: 1.2rem;
+    margin-block: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.acc-after-checkout{
+    font-size: 0.9rem;
+    padding-bottom: 25px;
+}
