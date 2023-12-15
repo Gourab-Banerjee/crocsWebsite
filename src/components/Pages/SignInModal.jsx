@@ -1,14 +1,51 @@
 import React, { useState } from "react";
 import "./SignInModal.css";
+import { Link } from "react-router-dom";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
+import SignUpModal from "./SignUpModal"; 
 
 const SignInModal = ({ onClose }) => {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
+
+  const [loginErrors, setLoginErrors] = useState({});
+  const [showSignUp, setShowSignUp] = useState(false);
+
+
+
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    const validationErrors = { ...loginErrors };
+    if (name === "email") {
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (!emailRegex.test(value)) {
+        validationErrors.email = "Email is not valid";
+      } else {
+        delete validationErrors.email;
+      }
+    } else if (name === "password") {
+      const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+      if (value.length < 6) {
+        validationErrors.password = "Password must be at least 6 characters";
+      } else if (!passwordRegex.test(value)) {
+        validationErrors.password = "Password is not valid";
+      } else {
+        delete validationErrors.password;
+      }
+    }
+    setLoginData(() => {
+      return {
+        ...loginData,
+        [name]: value,
+      };
+    });
+
+    setLoginErrors(validationErrors);
+  };
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -49,6 +86,18 @@ const SignInModal = ({ onClose }) => {
       // Handle error, e.g., display an error message
     }
   };
+
+  const toggleSignUp = () => {
+   
+    setShowSignUp(true);
+    
+  };
+
+  const closeSignUp =()=>{
+    setShowSignUp(false)
+    onClose()
+  };
+
 
   return (
     <div className="sign-in-modal">
@@ -104,10 +153,13 @@ const SignInModal = ({ onClose }) => {
                 type="email"
                 name="email"
                 value={loginData.email}
-                onChange={(e) =>
-                  setLoginData({ ...loginData, email: e.target.value })
-                }
+                onChange={handleChange}
               />
+              
+              {loginErrors.email && (
+                <span className="error">{loginErrors.email}</span>
+              )}
+            
             </div>
 
             <div className="input-box">
@@ -116,10 +168,13 @@ const SignInModal = ({ onClose }) => {
                 type="password"
                 name="password"
                 value={loginData.password}
-                onChange={(e) =>
-                  setLoginData({ ...loginData, password: e.target.value })
-                }
+                onChange={handleChange}
               />
+             
+              {loginErrors.password && (
+                <span className="error">{loginErrors.password}</span>
+              )}
+           
             </div>
             <div className="submit-box">
               <div className="submit-button">
@@ -130,7 +185,10 @@ const SignInModal = ({ onClose }) => {
           </form>
         </div>
       </div>
-      <div className="create-account">Create An Account</div>
+     
+      <div className="create-account" onClick={toggleSignUp}>Create An Account</div>
+      {/* <div className="create-account" ><Link to="/signUp">Create An Account</Link></div> */}
+
       <div className="or" id="OR">
         <strong>OR</strong>
       </div>
@@ -139,6 +197,7 @@ const SignInModal = ({ onClose }) => {
       <div className="acc-after-checkout">
         You can create an account after checkout
       </div>
+      {showSignUp && <SignUpModal onClose={closeSignUp} />}
     </div>
   );
 };

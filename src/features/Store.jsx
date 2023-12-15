@@ -4,6 +4,7 @@ import productReducer from './ProductSlice';
 import productDetailsReducer from "./ProductDetailsSlice"
 import emptyCartReducer from "./CreateEmptyCart"
 import cartReducer from "./CartSlice"
+import getCartDataReducer from "./GetCartDataSlice"
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     productDetails:productDetailsReducer,
     emptyCart:emptyCartReducer,
     cart: cartReducer,
+    getCartData: getCartDataReducer
 
     // Add other reducers as needed
   },

@@ -8,7 +8,8 @@ const initialState = {
 };
 
 // Create an asynchronous thunk for adding items to the cart
-export const addToCart = createAsyncThunk('cart/addToCart', async ({ cartId, quantity, sku }) => {
+export const addToCart = createAsyncThunk('cart/addToCart', async ({ cartId, parent_sku, quantity, sku }) => {
+  console.log(cartId,parent_sku,quantity.count,sku);
   try {
     const response = await fetch("/graphql", {
       method: 'POST',
@@ -21,11 +22,12 @@ export const addToCart = createAsyncThunk('cart/addToCart', async ({ cartId, qua
           mutation {
             addConfigurableProductsToCart(
               input: {
-                cart_id: "${cartId}"
+                cart_id: "${cartId.cart_id}"
                 cart_items: [
                   {
+                    parent_sku: "${parent_sku}"
                     data: {
-                      quantity: ${quantity}
+                      quantity: ${quantity.count}
                       sku: "${sku}"
                     }
                   }
@@ -54,10 +56,11 @@ export const addToCart = createAsyncThunk('cart/addToCart', async ({ cartId, qua
     });
 
     const data = await response.json();
+    console.log("data", data);
 
     // Extract the relevant information from the GraphQL response
     const cartItems = data.data.addConfigurableProductsToCart.cart.items;
-
+console.log("items", cartItems);
     return cartItems;
   } catch (error) {
     throw error;
@@ -77,7 +80,7 @@ const cartSlice = createSlice({
       .addCase(addToCart.fulfilled, (state, action) => {
 
         state.status = 'succeeded';
-        console.log(action.payload);
+        console.log("action", action.payload);
         state.cartItems = action.payload;
       })
       .addCase(addToCart.rejected, (state, action) => {

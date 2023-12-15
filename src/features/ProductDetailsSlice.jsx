@@ -36,6 +36,33 @@ export const fetchProductByUrl = createAsyncThunk(
                 description {
                   html
                 }
+                ... on ConfigurableProduct {
+                  variants {
+        product {
+          id
+          name
+          sku
+          attribute_set_id
+          ... on PhysicalProductInterface {
+            weight
+          }
+          price_range{
+            minimum_price{
+              regular_price{
+                value
+                currency
+              }
+            }
+          }
+        }
+        attributes {
+          uid
+          label
+          code
+          value_index
+        }
+      }
+                 }
               }
             }
           }`,

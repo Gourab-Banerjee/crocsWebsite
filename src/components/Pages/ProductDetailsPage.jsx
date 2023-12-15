@@ -15,6 +15,7 @@ const ProductDetailsPage = () => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails.items);
   const status = useSelector((state) => state.productDetails.status);
+  const cart_id = localStorage.getItem("cartId")
 
   useEffect(() => {
     // Dispatch the fetchProductByUrl action to update the state with product details
@@ -53,9 +54,11 @@ const ProductDetailsPage = () => {
 
   const handleAddToCart = () => {
     const cartItem = {
-      sku: item.sku,
+     parent_sku: item.sku,
       quantity: {count},
-      cartId: "WJraG2cSPRvSvVwJBuWR7oEtKJ0QVCjW",
+      cartId: {cart_id},
+      sku: item.variants[0].product.sku
+
     };
 
     dispatch(addToCart(cartItem));

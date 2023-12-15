@@ -133,6 +133,9 @@
     margin-top: 20px;
     
 }
+.create-account:hover{
+    cursor: pointer;
+}
 .line{
 
 width: 90%;

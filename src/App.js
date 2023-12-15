@@ -17,6 +17,8 @@ import ProductDetailsPage from "./components/Pages/ProductDetailsPage";
 import OfflinePage from "./components/Pages/OfflinePage";
 import NotFound from "./components/Pages/NotFound";
 import SignIn from "./components/Pages/SignIn";
+import SignInModal from "./components/Pages/SignInModal";
+import SignUpModal from "./components/Pages/SignUpModal";
 
 
 function App() {
@@ -58,7 +60,8 @@ function App() {
      <Route path="/product/:url_key" element={<ProductDetailsPage/>} />
 
      <Route path="*" element={<NotFound />} />
-     <Route path="/signIn" element={<SignIn />} />
+     <Route path="/signIn" element={<SignInModal />} />
+     <Route path="/signUp" element={<SignUpModal />} />
      </Routes>
      </>
      )}

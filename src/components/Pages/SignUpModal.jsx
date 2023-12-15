@@ -4,8 +4,10 @@ import "./SignUpModal.css";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
+import SignInModal from "./SignInModal";
 
 const SignUpModal = ({ onClose }) => {
+  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -14,6 +16,95 @@ const SignUpModal = ({ onClose }) => {
     confirmPassword: "",
     isSubscribed: false,
   });
+
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [errors, setErrors] = useState({});
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    const validationErrors = { ...errors };
+
+    if (name === "firstName") {
+      const namePattern = /^[a-zA-Z\s]+$/;
+      // Only alphabetic characters and spaces allowed
+      if (value.length < 3) {
+        validationErrors.firstName = "firstName must be at least 3 characters";
+      } else if (!namePattern.test(value)) {
+        validationErrors.firstName =
+          "Name should only contain alphabetic characters";
+      } else {
+        delete validationErrors.firstName;
+      }
+    }else if (name === "lastName") {
+      const namePattern = /^[a-zA-Z\s]+$/;
+      // Only alphabetic characters and spaces allowed
+      if (value.length < 3) {
+        validationErrors.lastName = "lastName must be at least 3 characters";
+      } else if (!namePattern.test(value)) {
+        validationErrors.lastName =
+          "Name should only contain alphabetic characters";
+      } else {
+        delete validationErrors.lastName;
+      }
+    }else if (name === "email") {
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (!emailRegex.test(value)) {
+        validationErrors.email = "Email is not valid";
+      }
+      // } else {
+      //   // Check if the email already exists in the user list
+      //   const emailExists = userList.some((user) => user.email === value);
+      //   if (emailExists) {
+      //     validationErrors.email = "Email already exists";
+      //   } 
+      else {
+          delete validationErrors.email;
+        }
+      }
+    
+    // else if (name === "phone") {
+    //   const phoneRegex = /^\d{10}$/;
+    //   const numberRegex = /^[0-9]+$/;
+    //   const phoneNoRegex = /^[6-9]\d{9}$/;
+
+    //   if (!numberRegex.test(value)) {
+    //     validationErrors.phone =
+    //       "phone number should only contain neumerical characters";
+    //   } else if (!phoneNoRegex.test(value)) {
+    //     validationErrors.phone = "phone number is not valid";
+    //   } else if (!phoneRegex.test(value)) {
+    //     validationErrors.phone = "phone number should contain exactly 10 digit";
+    //   } else {
+    //     delete validationErrors.phone;
+    //   }
+    // } 
+    else if (name === "password") {
+      const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+      if (value.length < 8) {
+        validationErrors.password = "Password must be at least 8 characters";
+      } else if (!passwordRegex.test(value)) {
+        validationErrors.password =
+          "Password should contain one digit, one lowercase, one uppercase";
+      } else {
+        delete validationErrors.password;
+      }
+    } else if (name === "confirmPassword") {
+      if (value !== formData.password) {
+        validationErrors.confirmPassword = "Passwords do not match";
+      } else {
+        delete validationErrors.confirmPassword;
+      }
+    }
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    setErrors(validationErrors);
+  };
   const handleSignUp = async (e) => {
     e.preventDefault();
     const { firstName, lastName, email, password } = formData;
@@ -60,6 +151,16 @@ const SignUpModal = ({ onClose }) => {
       // Handle error, e.g., display an error message
     }
   };
+  const toggleSignIn = () => {
+   
+    setShowSignIn(true);
+    
+  };
+
+  const closeSignIn =()=>{
+    setShowSignIn(false)
+    onClose()
+  };
   return (
     <div className="sign-in-modal">
       {/* Your sign-in or sign-up form goes here */}
@@ -102,7 +203,8 @@ const SignUpModal = ({ onClose }) => {
         </div>
       </div>
       <div className="or">OR</div>
-      <div className="create-account">Sign in with your Email</div>
+      <div className="create-account" onClick={toggleSignIn}>Sign in with your Email</div>
+      {showSignIn && <SignInModal onClose={closeSignIn} />}
       <div className="sign-in-form">
         <div className="form-title">
           <span>Create An Account</span>
@@ -115,22 +217,29 @@ const SignUpModal = ({ onClose }) => {
                 type="text"
                 name="firstName"
                 value={formData.firstName}
-                onChange={(e) =>
-                  setFormData({ ...formData, firstName: e.target.value })
-                }
+                onChange={handleChange}
               />
+               
+            
+              {errors.firstName && (
+                <span className="error">{errors.firstName}</span>
+              )}
+           
             </div>
 
             <div className="input-box">
               <label htmlFor="lastName">Last Name *</label>
               <input
                 type="text"
-                name="LastName"
+                name="lastName"
                 value={formData.lastName}
-                onChange={(e) =>
-                  setFormData({ ...formData, lastName: e.target.value })
-                }
+                onChange={handleChange}
               />
+               
+              {errors.lastName && (
+                <span className="error">{errors.lastName}</span>
+              )}
+            
             </div>
 
             <div className="newsletter">
@@ -151,10 +260,12 @@ const SignUpModal = ({ onClose }) => {
                 type="email"
                 name="email"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={handleChange}
               />
+              
+            
+              {errors.email && <span className="error">{errors.email}</span>}
+           
             </div>
 
             <div className="input-box">
@@ -163,22 +274,30 @@ const SignUpModal = ({ onClose }) => {
                 type="password"
                 name="password"
                 value={formData.password}
-                onChange={(e) =>
-                  setFormData({ ...formData, password: e.target.value })
-                }
+                onChange={handleChange}
               />
+               
+           
+              {errors.password && (
+                <span className="error">{errors.password}</span>
+              )}
+            
             </div>
 
             <div className="input-box">
-              <label htmlFor="passwsord">Confirm Password *</label>
+              <label htmlFor="confirmPasswsord">Confirm Password *</label>
               <input
                 type="password"
-                name="password"
+                name="confirmPassword"
                 value={formData.confirmPassword}
-                onChange={(e) =>
-                  setFormData({ ...formData, confirmPassword: e.target.value })
-                }
+                onChange={handleChange}
               />
+              
+            
+              {errors.confirmPassword && (
+                <span className="error">{errors.confirmPassword}</span>
+              )}
+            
             </div>
 
             <div className="submit-box">
