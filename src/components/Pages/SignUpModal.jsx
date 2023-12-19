@@ -20,6 +20,8 @@ const SignUpModal = ({ onClose }) => {
   const [showSignIn, setShowSignIn] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const [signUpError, setSignUpError] = useState(null);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -141,6 +143,16 @@ const SignUpModal = ({ onClose }) => {
 
       const data = await response.json();
 
+        // Check for errors in the response
+    if (data.errors) {
+      const errorMessages = data.errors.map((error) => error.message);
+      console.error("User sign-in errors:", errorMessages);
+
+      // Set the error messages in the state
+      setSignUpError(errorMessages.join(", "));
+      return;
+    }
+
       // Handle the response data
       console.log("User registration response:", data);
 
@@ -260,11 +272,12 @@ const SignUpModal = ({ onClose }) => {
                 type="email"
                 name="email"
                 value={formData.email}
-                onChange={handleChange}
+                onChange={handleChange}  
               />
               
             
               {errors.email && <span className="error">{errors.email}</span>}
+              {signUpError && <div className="error-message">{signUpError}</div>}
            
             </div>
 

@@ -19,6 +19,7 @@ import NotFound from "./components/Pages/NotFound";
 import SignIn from "./components/Pages/SignIn";
 import SignInModal from "./components/Pages/SignInModal";
 import SignUpModal from "./components/Pages/SignUpModal";
+import ViewCart from "./components/Pages/ViewCart";
 
 
 function App() {
@@ -62,6 +63,9 @@ function App() {
      <Route path="*" element={<NotFound />} />
      <Route path="/signIn" element={<SignInModal />} />
      <Route path="/signUp" element={<SignUpModal />} />
+     <Route path="/cart" element={<ViewCart />} />
+     
+
      </Routes>
      </>
      )}

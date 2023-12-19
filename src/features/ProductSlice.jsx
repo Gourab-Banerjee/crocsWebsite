@@ -18,7 +18,7 @@ export const fetchProducts = createAsyncThunk(
         body: JSON.stringify({
           query: `
             {
-              products(search: "", pageSize: 200, filter: { price: { from: "${minPrice}", to: "${maxPrice}" } }) {
+              products(search: "", pageSize: 20, filter: { price: { from: "${minPrice}", to: "${maxPrice}" } }) {
                 items {
                   id 
                   name

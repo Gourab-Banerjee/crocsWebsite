@@ -16,6 +16,9 @@ const SignInModal = ({ onClose }) => {
   const [showSignUp, setShowSignUp] = useState(false);
 
 
+  const [signInError, setSignInError] = useState(null);
+
+
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -29,10 +32,10 @@ const SignInModal = ({ onClose }) => {
       }
     } else if (name === "password") {
       const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-      if (value.length < 6) {
-        validationErrors.password = "Password must be at least 6 characters";
+      if (value.length < 8) {
+        validationErrors.password = "Password must be at least 8 characters";
       } else if (!passwordRegex.test(value)) {
-        validationErrors.password = "Password is not valid";
+        validationErrors.password = "Password is not matched";
       } else {
         delete validationErrors.password;
       }
@@ -71,6 +74,16 @@ const SignInModal = ({ onClose }) => {
       });
 
       const data = await response.json();
+
+       // Check for errors in the response
+    if (data.errors) {
+      const errorMessages = data.errors.map((error) => error.message);
+      console.error("User sign-in errors:", errorMessages);
+
+      // Set the error messages in the state
+      setSignInError(errorMessages.join(", "));
+      return;
+    }
       
 
       // Handle the response data
@@ -83,6 +96,7 @@ const SignInModal = ({ onClose }) => {
       onClose();
     } catch (error) {
       console.error("Error during user sign-in:", error);
+
       // Handle error, e.g., display an error message
     }
   };
@@ -159,6 +173,7 @@ const SignInModal = ({ onClose }) => {
               {loginErrors.email && (
                 <span className="error">{loginErrors.email}</span>
               )}
+              {signInError && <div className="error-message">{signInError}</div>}
             
             </div>
 
