@@ -6,6 +6,7 @@ import { FaHeart } from "react-icons/fa";
 import { ImUser } from "react-icons/im";
 import { BsCartFill } from "react-icons/bs";
 import MiniCart from "../../Pages/MiniCart";
+import UserDetails from "../../Pages/UserDetails";
 
 
 const HeaderMenuBar = () => {
@@ -16,10 +17,14 @@ const HeaderMenuBar = () => {
   const [showSearchInput, setShowSearchInput] = useState(false);
 
   const [isMiniCartOpen, setMiniCartOpen] = useState(false);
+  const[isUserPageOpen,setUserPageOpen]=useState(false)
 
   const handleCartClick = () => {
     setMiniCartOpen(!isMiniCartOpen);
   };
+  const handleUserClick=()=> {
+    setUserPageOpen(!isUserPageOpen)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -179,7 +184,7 @@ const HeaderMenuBar = () => {
             </a>
           </li>
           <li>
-            <a href="#!">
+            <a href="#!" onClick={handleUserClick}>
               <ImUser size={25} color="black" />
             </a>
           </li>
@@ -190,7 +195,9 @@ const HeaderMenuBar = () => {
           </li>
         </ul>
       </div>
+      {isUserPageOpen && <UserDetails />}
       {isMiniCartOpen && <MiniCart />}
+
 
     </div>
 

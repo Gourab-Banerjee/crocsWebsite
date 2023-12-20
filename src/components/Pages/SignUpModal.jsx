@@ -5,9 +5,10 @@ import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import SignInModal from "./SignInModal";
+import { useNavigate } from "react-router-dom";
 
 const SignUpModal = ({ onClose }) => {
-  
+  const navigate=useNavigate()
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -66,22 +67,7 @@ const SignUpModal = ({ onClose }) => {
         }
       }
     
-    // else if (name === "phone") {
-    //   const phoneRegex = /^\d{10}$/;
-    //   const numberRegex = /^[0-9]+$/;
-    //   const phoneNoRegex = /^[6-9]\d{9}$/;
-
-    //   if (!numberRegex.test(value)) {
-    //     validationErrors.phone =
-    //       "phone number should only contain neumerical characters";
-    //   } else if (!phoneNoRegex.test(value)) {
-    //     validationErrors.phone = "phone number is not valid";
-    //   } else if (!phoneRegex.test(value)) {
-    //     validationErrors.phone = "phone number should contain exactly 10 digit";
-    //   } else {
-    //     delete validationErrors.phone;
-    //   }
-    // } 
+   
     else if (name === "password") {
       const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
       if (value.length < 8) {
@@ -157,7 +143,7 @@ const SignUpModal = ({ onClose }) => {
       console.log("User registration response:", data);
 
       // Close the modal or perform other actions based on the response
-      //   onClose();
+        onClose();
     } catch (error) {
       console.error("Error during user registration:", error);
       // Handle error, e.g., display an error message

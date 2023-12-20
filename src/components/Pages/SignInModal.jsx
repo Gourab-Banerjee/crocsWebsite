@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import "./SignInModal.css";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { signInUser } from '../../features/SignInSlice';
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import SignUpModal from "./SignUpModal"; 
+import {createCustomerCart} from "../../features/CreateCustomerCart"
 
 const SignInModal = ({ onClose }) => {
+  const dispatch = useDispatch();
+  const signInToken = useSelector((state) => state.signIn.signInData);
+  const customerCartId = useSelector((state)=>state.customerCart.cartId);
+  const status = useSelector((state) => state.signIn.status);
+  const error = useSelector((state) => state.signIn.error);
+
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -16,7 +25,7 @@ const SignInModal = ({ onClose }) => {
   const [showSignUp, setShowSignUp] = useState(false);
 
 
-  const [signInError, setSignInError] = useState(null);
+  // const [signInError, setSignInError] = useState(null);
 
 
 
@@ -53,52 +62,66 @@ const SignInModal = ({ onClose }) => {
   const handleSignIn = async (e) => {
     e.preventDefault();
 
-    const graphqlQuery = `
-          mutation {
-            generateCustomerToken(
-              email: "${loginData.email}"
-              password: "${loginData.password}"
-            ) {
-              token
-            }
-          }
-        `;
+    // Dispatch the sign-in action
+    dispatch(signInUser(loginData));
+    localStorage.setItem("signInToken", signInToken)
 
-    try {
-      const response = await fetch("/graphql", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ query: graphqlQuery }),
-      });
+dispatch(createCustomerCart())
+localStorage.setItem("customerCartId", customerCartId);
 
-      const data = await response.json();
 
-       // Check for errors in the response
-    if (data.errors) {
-      const errorMessages = data.errors.map((error) => error.message);
-      console.error("User sign-in errors:", errorMessages);
+    // Close the modal or perform other actions based on the response
+      // onClose();
 
-      // Set the error messages in the state
-      setSignInError(errorMessages.join(", "));
-      return;
-    }
+
+
+
+    // const graphqlQuery = `
+    //       mutation {
+    //         generateCustomerToken(
+    //           email: "${loginData.email}"
+    //           password: "${loginData.password}"
+    //         ) {
+    //           token
+    //         }
+    //       }
+    //     `;
+
+    // try {
+    //   const response = await fetch("/graphql", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ query: graphqlQuery }),
+    //   });
+
+    //   const data = await response.json();
+
+    //    // Check for errors in the response
+    // if (data.errors) {
+    //   const errorMessages = data.errors.map((error) => error.message);
+    //   console.error("User sign-in errors:", errorMessages);
+
+    //   // Set the error messages in the state
+    //   setSignInError(errorMessages.join(", "));
+    //   return;
+    // }
       
 
-      // Handle the response data
-      console.log("User sign-in response:", data);
+    //   // Handle the response data
+    //   console.log("User sign-in response:", data);
 
-      const token= data.data.generateCustomerToken.token
-      localStorage.setItem("logInToken", token)
+    //   const token= data.data.generateCustomerToken.token
+    //   localStorage.setItem("logInToken", token)
 
-      // Close the modal or perform other actions based on the response
-      onClose();
-    } catch (error) {
-      console.error("Error during user sign-in:", error);
+    //   // Close the modal or perform other actions based on the response
+    //   onClose();
+    // } catch (error) {
+    //   console.error("Error during user sign-in:", error);
 
-      // Handle error, e.g., display an error message
-    }
+    //   // Handle error, e.g., display an error message
+    // }
   };
 
   const toggleSignUp = () => {
@@ -173,7 +196,7 @@ const SignInModal = ({ onClose }) => {
               {loginErrors.email && (
                 <span className="error">{loginErrors.email}</span>
               )}
-              {signInError && <div className="error-message">{signInError}</div>}
+              {error && <div className="error-message">{error}</div>}
             
             </div>
 

@@ -4,6 +4,7 @@ import { fetchCartData } from '../../features/GetCartDataSlice';
 import "./ViewCart.css"
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 
 const ViewCart = () => {
   const dispatch = useDispatch();
@@ -67,7 +68,13 @@ const ViewCart = () => {
                         <FaMinus />
                           <div className="table-data-qty">{item.quantity}</div>
                           <FaPlus />
-                          </div></td>
+                          
+                          </div>
+                          <div className="update">
+                          <FaShoppingCart />
+                          <span>update</span>
+                          </div>
+                          </td>
                         <td>
                         <div className="table-data-price">KD {item.product.price.regularPrice.amount.value * item.quantity}</div>
                         </td>

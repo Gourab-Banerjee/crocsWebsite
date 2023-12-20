@@ -5,14 +5,19 @@ import productDetailsReducer from "./ProductDetailsSlice"
 import emptyCartReducer from "./CreateEmptyCart"
 import cartReducer from "./CartSlice"
 import getCartDataReducer from "./GetCartDataSlice"
-
+import userDetailsReducer from "./UserDetailsSlice"
+import signInReducer from "./SignInSlice"
+import customerCartReducer from "./CreateCustomerCart"
 const store = configureStore({
   reducer: {
     products: productReducer,
     productDetails:productDetailsReducer,
     emptyCart:emptyCartReducer,
     cart: cartReducer,
-    getCartData: getCartDataReducer
+    getCartData: getCartDataReducer,
+    userDetails: userDetailsReducer,
+    signIn: signInReducer,
+    customerCart:customerCartReducer
 
     // Add other reducers as needed
   },
