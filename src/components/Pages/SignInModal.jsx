@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import "./SignInModal.css";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import { signInUser } from '../../features/SignInSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { signInUser } from "../../features/SignInSlice";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import SignUpModal from "./SignUpModal"; 
-import {createCustomerCart} from "../../features/CreateCustomerCart"
+import SignUpModal from "./SignUpModal";
+import { createCustomerCart } from "../../features/CreateCustomerCart";
+import { mergeCarts } from "../../features/MergeCartSlice";
 
 const SignInModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const signInToken = useSelector((state) => state.signIn.signInData);
-  const customerCartId = useSelector((state)=>state.customerCart.cartId);
+  // const signInToken = useSelector((state) => state.signIn.signInData);
+  // const customerCartId = useSelector((state) => state.customerCart.cartId);
   const status = useSelector((state) => state.signIn.status);
   const error = useSelector((state) => state.signIn.error);
 
@@ -24,10 +25,7 @@ const SignInModal = ({ onClose }) => {
   const [loginErrors, setLoginErrors] = useState({});
   const [showSignUp, setShowSignUp] = useState(false);
 
-
   // const [signInError, setSignInError] = useState(null);
-
-
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -61,20 +59,48 @@ const SignInModal = ({ onClose }) => {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
+try {
+  const signInToken=await dispatch(signInUser(loginData));
+  console.log(signInToken);
+  localStorage.setItem("signInToken", signInToken.payload);
+
+  const customerCartId=await dispatch(createCustomerCart());
+  console.log("ids",customerCartId);
+  localStorage.setItem("customerCartId", customerCartId.payload);
+
+  await dispatch(mergeCarts());
+} catch (error) {
+  throw error
+}
+   
 
     // Dispatch the sign-in action
-    dispatch(signInUser(loginData));
-    localStorage.setItem("signInToken", signInToken)
+    // dispatch(signInUser(loginData))
+    // .then(() => {
+    //   localStorage.setItem("signInToken", signInToken);
+    //   return dispatch(createCustomerCart());
+    // })
+    // .then(() => {
+    //   localStorage.setItem("customerCartId", customerCartId);
+    //   return dispatch(mergeCarts());
+    // })
+    // .catch((error) => {
+    //   console.error("Error during sign-in and cart actions:", error);
+      // Handle error, display an error message, etc.
+    // });
 
-dispatch(createCustomerCart())
-localStorage.setItem("customerCartId", customerCartId);
 
+    // localStorage.setItem("signInToken", signInToken);
+
+    // Dispatch the createCustomerCart action
+    // dispatch(createCustomerCart());
+    // localStorage.setItem("customerCartId", customerCartId);
+
+    // Dispatch the mergeCarts action
+    // dispatch(mergeCarts());
 
     // Close the modal or perform other actions based on the response
-      // onClose();
-
-
-
+    // onClose();
 
     // const graphqlQuery = `
     //       mutation {
@@ -107,7 +133,6 @@ localStorage.setItem("customerCartId", customerCartId);
     //   setSignInError(errorMessages.join(", "));
     //   return;
     // }
-      
 
     //   // Handle the response data
     //   console.log("User sign-in response:", data);
@@ -125,16 +150,13 @@ localStorage.setItem("customerCartId", customerCartId);
   };
 
   const toggleSignUp = () => {
-   
     setShowSignUp(true);
-    
   };
 
-  const closeSignUp =()=>{
-    setShowSignUp(false)
-    onClose()
+  const closeSignUp = () => {
+    setShowSignUp(false);
+    onClose();
   };
-
 
   return (
     <div className="sign-in-modal">
@@ -192,12 +214,11 @@ localStorage.setItem("customerCartId", customerCartId);
                 value={loginData.email}
                 onChange={handleChange}
               />
-              
+
               {loginErrors.email && (
                 <span className="error">{loginErrors.email}</span>
               )}
               {error && <div className="error-message">{error}</div>}
-            
             </div>
 
             <div className="input-box">
@@ -208,11 +229,10 @@ localStorage.setItem("customerCartId", customerCartId);
                 value={loginData.password}
                 onChange={handleChange}
               />
-             
+
               {loginErrors.password && (
                 <span className="error">{loginErrors.password}</span>
               )}
-           
             </div>
             <div className="submit-box">
               <div className="submit-button">
@@ -223,8 +243,10 @@ localStorage.setItem("customerCartId", customerCartId);
           </form>
         </div>
       </div>
-     
-      <div className="create-account" onClick={toggleSignUp}>Create An Account</div>
+
+      <div className="create-account" onClick={toggleSignUp}>
+        Create An Account
+      </div>
       {/* <div className="create-account" ><Link to="/signUp">Create An Account</Link></div> */}
 
       <div className="or" id="OR">

@@ -30,6 +30,8 @@ const UserDetails = () => {
   };
   const handleLogOut=()=>{
     localStorage.removeItem('signInToken')
+    localStorage.removeItem('customerCartId')
+    localStorage.removeItem("cartId")
     setUserVisibility(false);
   }
 

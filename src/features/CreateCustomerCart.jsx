@@ -46,6 +46,7 @@ const createCustomerCartSlice = createSlice({
       // Update the state with the created cart ID
       state.cartId = action.payload;
 console.log("customeraction",action.payload);
+// localStorage.setItem("customerCartId", action.payload);
       
     });
   },

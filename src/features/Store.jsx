@@ -8,6 +8,7 @@ import getCartDataReducer from "./GetCartDataSlice"
 import userDetailsReducer from "./UserDetailsSlice"
 import signInReducer from "./SignInSlice"
 import customerCartReducer from "./CreateCustomerCart"
+import mergeCartsReducer from "./MergeCartSlice"
 const store = configureStore({
   reducer: {
     products: productReducer,
@@ -17,7 +18,8 @@ const store = configureStore({
     getCartData: getCartDataReducer,
     userDetails: userDetailsReducer,
     signIn: signInReducer,
-    customerCart:customerCartReducer
+    customerCart:customerCartReducer,
+    mergeCarts:mergeCartsReducer
 
     // Add other reducers as needed
   },

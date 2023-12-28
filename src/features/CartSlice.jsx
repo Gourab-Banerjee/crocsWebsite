@@ -11,11 +11,13 @@ const initialState = {
 export const addToCart = createAsyncThunk('cart/addToCart', async ({ cartId, parent_sku, quantity, sku }) => {
   console.log(cartId,parent_sku,quantity.count,sku);
   try {
+    const signInToken=localStorage.getItem('signInToken');
     const response = await fetch("/graphql", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // Add any other necessary headers
+        "Authorization": `Bearer ${signInToken}`
+       
       },
       body: JSON.stringify({
         query: `

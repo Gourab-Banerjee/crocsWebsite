@@ -5,10 +5,12 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
  export const fetchCartData = createAsyncThunk('cart/fetchCartData', async (cartId) => {
 
   try {
+    const signInToken=localStorage.getItem('signInToken');
     const response = await fetch('/graphql', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        "Authorization": `Bearer ${signInToken}`
       },
       body: JSON.stringify({
         query: `

@@ -37,7 +37,7 @@ export const signInUser = createAsyncThunk('signIn/signInUser', async (loginData
     if (data.errors) {
       throw new Error(data.errors[0].message);
     }
-
+console.log(data.data.generateCustomerToken.token);
     return data.data.generateCustomerToken.token;
   } catch (error) {
     throw error;
@@ -57,6 +57,7 @@ const signInSlice = createSlice({
       .addCase(signInUser.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.signInData = action.payload;
+        // localStorage.setItem("signInToken", action.payload);
       })
       .addCase(signInUser.rejected, (state, action) => {
         state.status = 'failed';

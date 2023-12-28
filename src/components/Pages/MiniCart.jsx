@@ -5,20 +5,28 @@ import './MiniCart.css';
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { LiaLessThanSolid } from "react-icons/lia";
 import { LiaGreaterThanSolid } from "react-icons/lia";
+import { useNavigate } from 'react-router-dom';
 
 const MiniCart = () => {
+  const navigate= useNavigate();
   const dispatch = useDispatch();
   const cartData = useSelector((state) => state.getCartData.data);
   const [isCartVisible, setCartVisibility] = useState(true);
+  const loggedIn=localStorage.getItem("signInToken")
 
   useEffect(() => {
-    const cartId = localStorage.getItem("cartId");
+    const cartId = loggedIn ? localStorage.getItem("customerCartId"): localStorage.getItem("cartId");
     console.log("cartId", cartId);
     dispatch(fetchCartData(cartId));
   }, [dispatch]);
 
   const handleCloseClick = () => {
     setCartVisibility(false);
+  };
+
+  const handleViewCartClick = () => {
+    // Navigate to the cart page
+    navigate('/cart'); // Change '/cart' to the actual path of your cart page
   };
 
   return (
@@ -65,7 +73,7 @@ const MiniCart = () => {
                     <p>SUBTOTAL:</p>
                     <p>KD {cartData.prices.grand_total.value} </p>
                   </div>
-                  <div className="view-cart-button">view and edit cart</div>
+                  <div className="view-cart-button" onClick={handleViewCartClick}>view and edit cart</div>
                 <div className="checkout-button">GO TO CHECKOUT</div>
                 </div>
               ) : (

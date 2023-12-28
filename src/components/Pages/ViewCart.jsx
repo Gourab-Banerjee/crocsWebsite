@@ -11,9 +11,10 @@ const ViewCart = () => {
   const cartData = useSelector((state) => state.getCartData.data);
   const status = useSelector((state) => state.getCartData.status);
   const error = useSelector((state) => state.getCartData.error);
+  const loggedIn=localStorage.getItem("signInToken")
 
   useEffect(() => {
-    const cartId = localStorage.getItem("cartId");
+    const cartId = loggedIn ? localStorage.getItem("customerCartId"): localStorage.getItem("cartId");
     // Replace 'yourCartId' with the actual cart ID you want to fetch
     dispatch(fetchCartData(cartId));
   }, [dispatch]);

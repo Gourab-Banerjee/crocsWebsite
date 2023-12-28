@@ -15,7 +15,9 @@ const ProductDetailsPage = () => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails.items);
   const status = useSelector((state) => state.productDetails.status);
-  const cart_id = localStorage.getItem("cartId")
+
+  const loggedIn=localStorage.getItem("signInToken")
+  const cart_id = loggedIn ? localStorage.getItem("customerCartId") : localStorage.getItem("cartId")
 
   useEffect(() => {
     // Dispatch the fetchProductByUrl action to update the state with product details
